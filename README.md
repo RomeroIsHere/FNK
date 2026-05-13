@@ -16,4 +16,8 @@ vim .env # Configura tu Ambiente Local de Desarollo
 
 ## Instalación Por contenedores(Docker)
 
-TODO: finish all the Stuff i need to Make docker compose work, as current YAML does not work with Laravel
+Usar ya sea ```compose.prod.yaml``` o ```compose.dev.yaml``` para Crear y ejecutar la imagen y Contenedores necesarios para Produccion o Desarollo
+
+```bash
+docker compose -f compose.prod.yaml up --build -d --remove-orphans
+```
