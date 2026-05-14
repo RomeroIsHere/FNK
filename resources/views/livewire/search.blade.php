@@ -11,5 +11,9 @@
             </div>
         @endforeach
     </div>
-    {{ $this->sought()->links('vendor.pagination.tailwind') }}
+    @if (!$found)
+        {{ $this->sought()->links('vendor.pagination.tailwind') }}
+    @else
+        {{ $this->sought()->appends('found', $found)->links('vendor.pagination.tailwind') }}
+    @endif
 </div>

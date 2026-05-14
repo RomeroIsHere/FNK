@@ -2,12 +2,15 @@
 
 namespace App\Livewire;
 
+use Livewire\Attributes\Url;
 use App\Models\FoundItem;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class Found extends Component
 {
+    #[Url]
+    public $sought= '';
     use WithPagination;
     public $datos =[];
     public $count = 0;
