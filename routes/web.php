@@ -14,4 +14,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::get('/found', function () {
+        return view('foundtable');
+    })->name('found');
+    Route::get('/sought', function () {
+        return view('soughttable');
+    })->name('sought');
 });
