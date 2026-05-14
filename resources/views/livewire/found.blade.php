@@ -4,13 +4,14 @@
     <x-application-logo class="block h-12 w-auto" />
 
     <h1 class="mt-8 text-2xl font-medium text-gray-900">
-        Found Unclaimed Items: {{ $count=10 }}
+        Found Unclaimed Items: {{ $count }}
     </h1>
     <div class="flex flex-col">
-        @for ($i = 0; $i < $count; $i++)
+         @foreach ($this->found() as $founds)
             <div class="bg-blue-200 m-2 p-3 lg:p-4 rounded-lg">
-                {{ $i }}
+                {{ $founds->name }}
             </div>
-        @endfor
+        @endforeach
     </div>
+    {{ $this->found()->links('vendor.pagination.tailwind') }}
 </div>
