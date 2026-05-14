@@ -15,7 +15,7 @@ class Found extends Component
         $this->count=FoundItem::count();
     }
     public function found(){
-        return FoundItem::paginate(5);
+        return FoundItem::paginate(5, ['*'], "found");
     }
     public function render()
     {

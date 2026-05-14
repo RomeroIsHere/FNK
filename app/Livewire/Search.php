@@ -15,7 +15,7 @@ class Search extends Component
         $this->count=SoughtItem::count();
     }
     public function sought(){
-        return SoughtItem::paginate(5);
+        return SoughtItem::paginate(5, ['*'], "sought");
     }
 
     public function render()
