@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\FoundItem;
 use Livewire\Attributes\Url;
 use App\Models\SoughtItem;
 use Livewire\Component;
@@ -14,7 +15,24 @@ class Search extends Component
     use WithPagination;
     public $datos =[];
     public $count = 0;
+     public $ViewingItemModal = false;
+    public $ViewingAltItemModal= false;
+    public FoundItem $ViewedItem;
+    public SoughtItem $ViewedAltItem;
+    public function openModal($id){
+        $this->ViewedItem = FoundItem::find($id);
+        $this->ViewingItemModal = true;
+        $this->ViewingAltItemModal = false;
+    }
+    public function openSoughtModal($id){
+        $this->ViewedAltItem = SoughtItem::find($id);
+        $this->ViewingAltItemModal = true;
+        $this->ViewingItemModal = false;
+    }
+
     public function mount(){
+        $this->ViewedItem =new FoundItem();
+        $this->ViewedAltItem=new SoughtItem();
         $this->count=SoughtItem::count();
     }
     public function sought(){
