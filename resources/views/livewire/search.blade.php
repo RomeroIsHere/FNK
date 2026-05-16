@@ -22,9 +22,11 @@
                 @foreach ($ViewedItem->soughtitems as $soughts)
                     <div class="bg-blue-200 hover:bg-sky-700 focus:bg-sky-700 active:bg-sky-900 m-2 p-3 lg:p-4 rounded-lg" wire:click="openSoughtModal({{ $soughts->id }})">
                         {{ $soughts->name }}
+                        @if (Auth::id()==$soughts->user->id)
                         <x-button class="ml-2" wire:click="" wire:loading.attr="disabled">
                             Mark as Found!
                         </x-button>
+                        @endif
                     </div>
                 @endforeach
             </div>
@@ -50,9 +52,11 @@
                 @foreach ($ViewedAltItem->founditems as $soughts)
                     <div class="bg-blue-200 hover:bg-sky-700 focus:bg-sky-700 active:bg-sky-900 m-2 p-3 lg:p-4 rounded-lg" wire:click="openModal({{ $soughts->id }})">
                         {{ $soughts->name }}
+                        @if (Auth::id()==$ViewedAltItem->user->id)
                         <x-button class="ml-2" wire:click="" wire:loading.attr="disabled">
                             Mark as Found!
                         </x-button>
+                        @endif
                     </div>
                 @endforeach
             </div>
@@ -62,9 +66,11 @@
             <x-secondary-button wire:click="$toggle('ViewingAltItemModal')" wire:loading.attr="disabled">
                 Close
             </x-secondary-button>
-            <x-danger-button class="ml-2" wire:click="" wire:loading.attr="disabled">
-                Delete Item
-            </x-danger-button>
+            @if ($ViewedItem->user && Auth::id()==$ViewedAltItem->user->id)
+                <x-danger-button class="ml-2" wire:click="" wire:loading.attr="disabled">
+                    Delete Item
+                </x-danger-button>
+            @endif
         </x-slot>
     </x-dialog-modal>
     @if (!$found)
