@@ -68,7 +68,7 @@
                 Close
             </x-secondary-button>
             @if ($ViewedAltItem->user && Auth::id()==$ViewedAltItem->user->id)
-                <x-danger-button class="ml-2" wire:click="" wire:loading.attr="disabled">
+                <x-danger-button class="ml-2" wire:click="deleteSought({{ $ViewedAltItem->id }})" wire:loading.attr="disabled">
                     Delete Item
                 </x-danger-button>
             @endif

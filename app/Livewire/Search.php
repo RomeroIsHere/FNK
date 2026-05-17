@@ -47,6 +47,9 @@ class Search extends Component
         }
         return SoughtItem::where('name','like','%'.$this->where.'%')->paginate(5, ['*'], "sought");
     }
+    public function deleteSought(int $id){
+        SoughtItem::find($id)->delete();
+    }
 
     public function render()
     {
