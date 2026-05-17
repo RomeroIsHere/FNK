@@ -15,6 +15,7 @@ class Found extends Component
     use WithPagination;
     public $datos =[];
     public $count = 0;
+    public $where = '';
     public $UserId = null;
 
     public $ViewingItemModal = false;
@@ -42,9 +43,9 @@ class Found extends Component
     }
     public function found(){
         if($this->UserId){
-            return FoundItem::where('user_id', $this->UserId)->paginate(5, ['*'], "found");
+            return FoundItem::where('name','like','%'.$this->where.'%')->where('user_id', $this->UserId)->paginate(5, ['*'], "found");
         }
-        return FoundItem::paginate(5, ['*'], "found");
+        return FoundItem::where('name','like','%'.$this->where.'%')->paginate(5, ['*'], "found");
     }
     public function render()
     {

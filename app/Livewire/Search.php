@@ -15,6 +15,7 @@ class Search extends Component
     use WithPagination;
     public $datos =[];
     public $count = 0;
+    public $where = "";
     public $UserId = null;
 
      public $ViewingItemModal = false;
@@ -42,9 +43,9 @@ class Search extends Component
     }
     public function sought(){
         if($this->UserId){
-            return SoughtItem::where('user_id', $this->UserId)->paginate(5, ['*'], "found");
+            return SoughtItem::where('name','like','%'.$this->where.'%')->where('user_id', $this->UserId)->paginate(5, ['*'], "found");
         }
-        return SoughtItem::paginate(5, ['*'], "sought");
+        return SoughtItem::where('name','like','%'.$this->where.'%')->paginate(5, ['*'], "sought");
     }
 
     public function render()

@@ -4,6 +4,7 @@
     <h1 class="mt-8 text-2xl font-medium text-gray-900">
         Sought Items:{{ $count }}
     </h1>
+    <x-input placeholder="Buscar..." wire:model.live="where"/>
     <div class="flex flex-col">
         @foreach ($this->sought() as $soughts)
             <div class="bg-blue-200 hover:bg-sky-700 focus:bg-sky-700 active:bg-sky-900 m-2 p-3 lg:p-4 rounded-lg" wire:click="openSoughtModal({{ $soughts->id }})">
