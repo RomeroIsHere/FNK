@@ -8,4 +8,6 @@
             </div>
         </div>
     </div>
+    @livewire('found-modal')
+    @livewire('sought-modal')
 </x-app-layout>
