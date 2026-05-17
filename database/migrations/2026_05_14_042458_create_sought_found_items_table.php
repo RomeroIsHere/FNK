@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('found_item_sought_item', function (Blueprint $table) {
             $table->foreignIdFor(FoundItem::class);
             $table->foreignIdFor(SoughtItem::class);
-            $table->foreign('found_item_id')->references('id')->on('found_items');
-            $table->foreign('sought_item_id')->references('id')->on('sought_items');
+            $table->foreign('found_item_id')->references('id')->on('found_items')->onDelete('cascade');
+            $table->foreign('sought_item_id')->references('id')->on('sought_items')->onDelete('cascade');
             $table->timestamps();
         });
     }

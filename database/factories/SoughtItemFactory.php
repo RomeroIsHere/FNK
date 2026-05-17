@@ -20,7 +20,7 @@ class SoughtItemFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'description'=> fake()->paragraph(),
+            'description'=> fake()->sentence(),
             'foundState'=>fake()->boolean(),
             'user_id'=> User::all()->random()->id,
         ];
