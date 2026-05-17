@@ -67,7 +67,7 @@
             <x-secondary-button wire:click="$toggle('ViewingAltItemModal')" wire:loading.attr="disabled">
                 Close
             </x-secondary-button>
-            @if ($ViewedItem->user && Auth::id()==$ViewedAltItem->user->id)
+            @if ($ViewedAltItem->user && Auth::id()==$ViewedAltItem->user->id)
                 <x-danger-button class="ml-2" wire:click="" wire:loading.attr="disabled">
                     Delete Item
                 </x-danger-button>
