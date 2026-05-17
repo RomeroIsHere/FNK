@@ -18,20 +18,9 @@ class Found extends Component
     public $where = '';
     public $UserId = null;
 
-    public $ViewingItemModal = false;
-    public $ViewingAltItemModal= false;
-    public FoundItem $ViewedItem;
-    public SoughtItem $ViewedAltItem;
     public function openModal($id){
-        $this->ViewedItem = FoundItem::find($id);
-        $this->ViewingItemModal = true;
-        $this->ViewingAltItemModal = false;
-    }
-    public function openSoughtModal($id){
-        $this->ViewedAltItem = SoughtItem::find($id);
-        $this->ViewingAltItemModal = true;
-        $this->ViewingItemModal = false;
-    }
+        $this->dispatch('open-found-modal', itemid: $id);
+    }    
 
     public function mount(){
         $this->ViewedItem =new FoundItem();
@@ -46,6 +35,11 @@ class Found extends Component
             return FoundItem::where('name','like','%'.$this->where.'%')->where('user_id', $this->UserId)->paginate(5, ['*'], "found");
         }
         return FoundItem::where('name','like','%'.$this->where.'%')->paginate(5, ['*'], "found");
+    }
+    public function deleteFound(int $id){
+        FoundItem::find($id)->delete();
+        $this->ViewingAltItemModal = false;
+        $this->ViewingItemModal = false;
     }
     public function render()
     {

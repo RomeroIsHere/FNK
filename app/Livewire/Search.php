@@ -17,25 +17,11 @@ class Search extends Component
     public $count = 0;
     public $where = "";
     public $UserId = null;
-
-     public $ViewingItemModal = false;
-    public $ViewingAltItemModal= false;
-    public FoundItem $ViewedItem;
-    public SoughtItem $ViewedAltItem;
     public function openModal($id){
-        $this->ViewedItem = FoundItem::find($id);
-        $this->ViewingItemModal = true;
-        $this->ViewingAltItemModal = false;
-    }
-    public function openSoughtModal($id){
-        $this->ViewedAltItem = SoughtItem::find($id);
-        $this->ViewingAltItemModal = true;
-        $this->ViewingItemModal = false;
+        $this->dispatch('open-sought-modal', itemid: $id);
     }
 
     public function mount(){
-        $this->ViewedItem =new FoundItem();
-        $this->ViewedAltItem=new SoughtItem();
         $this->count=SoughtItem::count();
         if($this->UserId){
             $this->count=SoughtItem::where('user_id', $this->UserId)->count();
@@ -47,10 +33,6 @@ class Search extends Component
         }
         return SoughtItem::where('name','like','%'.$this->where.'%')->paginate(5, ['*'], "sought");
     }
-    public function deleteSought(int $id){
-        SoughtItem::find($id)->delete();
-    }
-
     public function render()
     {
         return view('livewire.search');
