@@ -18,10 +18,10 @@ Route::middleware([
     })->name('dashboard');
     
     Route::get('/found', function () {
-        return view('foundtable');
+        return view('items.foundtable');
     })->name('found');
     Route::get('/sought', function () {
-        return view('soughttable');
+        return view('items.soughttable');
     })->name('sought');
     
     Route::get('/soughtedit/{id}', [soughtedit::class, 'show'])->name('soughtedit');
