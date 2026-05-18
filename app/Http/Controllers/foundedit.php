@@ -13,7 +13,7 @@ class foundedit extends Controller
     {
         foreach(Auth::user()->FoundItems as $found){
             if ($found->id==$id){
-                return view('foundedit',['id'=>$id]);
+                return view('items.foundedit',['id'=>$id]);
             }
         }
         return redirect()->route('found');

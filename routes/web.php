@@ -26,4 +26,10 @@ Route::middleware([
     
     Route::get('/soughtedit/{id}', [soughtedit::class, 'show'])->name('soughtedit');
     Route::get('/foundedit/{id}', [foundedit::class, 'show'])->name('foundedit');
+    Route::get('/sought/new', function(){
+        return view('items.soughtnew');
+    })->name('soughtnew');
+    Route::get('/found/new',  function(){
+        return view('items.foundnew');
+    })->name('foundnew');
 });

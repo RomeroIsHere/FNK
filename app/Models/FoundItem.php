@@ -31,4 +31,7 @@ class FoundItem extends Model
         'description',
         'foundState',
     ];
+    protected $attributes = array(
+      'foundState' => false
+    );
 }
