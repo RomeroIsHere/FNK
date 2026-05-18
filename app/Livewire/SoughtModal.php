@@ -24,6 +24,9 @@ class SoughtModal extends Component
         $this->ViewingItemModal = false;
         SoughtItem::find($id)->delete();  
     }
+    public function editSought(int $id){
+        return redirect()->route('soughtedit', ['id' => $id]);
+    }
     public function mount(){
         $this->ViewedItem =new SoughtItem();
     }

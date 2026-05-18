@@ -27,6 +27,9 @@
             <x-danger-button class="ml-2" wire:click="deleteFound({{ $ViewedItem->id }})" wire:loading.attr="disabled">
                 Delete Item
             </x-danger-button>
+            <x-button class="ml-2" wire:click="editFound({{ $ViewedItem->id }})" wire:loading.attr="disabled">
+                Edit Item
+            </x-button>
         @endif
     </x-slot>
 </x-dialog-modal>
