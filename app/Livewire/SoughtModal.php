@@ -22,7 +22,8 @@ class SoughtModal extends Component
     }
     public function deleteSought(int $id){
         $this->ViewingItemModal = false;
-        SoughtItem::find($id)->delete();  
+        SoughtItem::find($id)->delete();
+        return redirect(request()->header('Referer'));
     }
     public function editSought(int $id){
         return redirect()->route('soughtedit', ['id' => $id]);

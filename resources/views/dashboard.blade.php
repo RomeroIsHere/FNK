@@ -9,6 +9,11 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     @livewire('found', ['UserId' => Auth::id()])
+                    <a href='{{ route("foundnew") }}'>
+                        <x-button class="w-[calc(100%-2rem)] m-4" >
+                            +
+                        </x-button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -17,6 +22,11 @@
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     @livewire('search', ['UserId' => Auth::id()])
+                    <a href='{{ route("soughtnew") }}'>
+                        <x-button class="w-[calc(100%-2rem)] m-4">
+                            +
+                        </x-button>
+                    </a>
                 </div>
             </div>
         </div>
