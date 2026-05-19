@@ -3,10 +3,13 @@
 namespace App\Livewire;
 
 use App\Models\SoughtItem;
+use Laravel\Jetstream\InteractsWithBanner;
 use Livewire\Component;
 
 class Soughtedit extends Component
 {
+    use InteractsWithBanner;
+
     public $id;
     public $found;
     public $name="";
@@ -16,6 +19,7 @@ class Soughtedit extends Component
         $this->found->name=$this->name;
         $this->found->description=$this->desc;
         $this->found->save();
+        $this->banner('Item Saved.');
     }
     public function delete(){
         $this->found->delete();
