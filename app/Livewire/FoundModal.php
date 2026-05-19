@@ -24,6 +24,10 @@ class FoundModal extends Component
     public function deleteFound(int $id){
         $this->ViewingItemModal = false;
         FoundItem::find($id)->delete();  
+        return redirect(request()->header('Referer'));
+    }
+    public function editFound(int $id){
+        return redirect()->route('foundedit', ['id' => $id]);
     }
     public function mount(){
         $this->ViewedItem =new FoundItem();

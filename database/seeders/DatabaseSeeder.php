@@ -20,14 +20,14 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(10)->create();
 
-        User::firstOrCreate ([
-            'name' => 'Guillermo Romero Cuevas',
+        /*User::firstOrCreate ([
             'email' => 'guillermoromecu@gmail.com',
+            'name' => 'Guillermo Romero Cuevas',
             'password' => Hash::make('password'),
-        ]);
+        ]);*/
         User::firstOrCreate ([
-            'name' => 'Test User',
             'email' => 'test@example.com',
+            'name' => 'Test User',
             'password' => Hash::make('password'),
         ]);
         FoundItem::factory(20)->create();
